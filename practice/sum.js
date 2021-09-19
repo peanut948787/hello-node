@@ -1,4 +1,4 @@
-console.log("hello world!");
+console.log("hello recursive!");
 
 function sum(n) {
   if (n <= 0) {
@@ -6,15 +6,6 @@ function sum(n) {
   } else {
     return sum(n - 1) + n;
   }
-}
-
-function sum2(num) {
-  let result = 0;
-  while (num > 0) {
-    result += num;
-    num--;
-  }
-  return result;
 }
 
 let result = sum(10);
