@@ -21,15 +21,15 @@ answer:
 
 1. 執行結果：
    先 console.log 1~ 100,
-   進入 if statement ， call readData(100),
+   進入 if statement => true， call readData(100),
    再 console.log 101~ 200,
-   再進入 if statement ， call readData(200),
+   再進入 if statement => true ， call readData(200),
    再 console.log 201~ 300,
-   再進入 if statement ， call readData(300),
+   再進入 if statement => true ， call readData(300),
    再 console.log 301~ 400,
-   再進入 if statement ， call readData(400),
+   再進入 if statement => true ， call readData(400),
    再 console.log 401~ 500，
-   最後 console.log "after"。
+   再進入 if statement => false， 輪到 console.log "after"。
    <br>
 1. after 會在 500 之後印出。
    <br>
@@ -58,19 +58,18 @@ console.log("after");
 1. 執行結果：
    readData(0)進入 Call Stack
    readData(0)先 console.log 1~ 100,
-   再進入 if statement ，
-   執行 setTimeout(function () {readData(idx);}, 0);
+   進入 if statement => true，執行 setTimeout(function () {readData(idx);}, 0);
    將 setTimeout 交給 Web Api，
    等待 0 秒後 readData(idx)進入 Callback Queue，
    console.log("after")進入 Call Stack
    當 console.log("after")執行完畢後，eventloop 才會將 readData(idx)帶回 Call Stack，
    再 console.log 101~ 200,
-   再進入 if statement ， setTimeout(function () {readData(200));}, 0)
+   再進入 if statement =>true ， setTimeout(function () {readData(200));}, 0)
    再 console.log 201~ 300,
-   再進入 if statement ， setTimeout(function () {readData(300);}, 0)
+   再進入 if statement =>true ， setTimeout(function () {readData(300);}, 0)
    再 console.log 301~ 400,
-   再進入 if statement ， setTimeout(function () {readData(400);}, 0)
-   再 console.log 401~ 500。
+   再進入 if statement =>true ， setTimeout(function () {readData(400);}, 0)
+   再 console.log 401~ 500，if statement => false，結束。
    <br>
 2. after 會在 100 之後就印出。
    <br>
