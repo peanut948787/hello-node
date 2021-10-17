@@ -20,7 +20,7 @@ let format = "json";
 //     console.log(res.data);
 //   })
 //   .catch((e) => {
-//     console.error("發生錯誤啦", e);
+//     console.error("發生錯誤啦", e);g
 //   });
 
 (async function axiosAwait() {
