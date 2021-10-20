@@ -1,4 +1,5 @@
-# .evn.example here.Modify the code below :)
+Modify the code below :) and add it to your .env,
+if you don't have it, don't forget to create one.
 
 DB_USER= /username here/
 DB_PASS= /password here/
