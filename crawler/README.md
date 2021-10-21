@@ -1,5 +1,6 @@
-# .evn.example here.Modify the code below :)
+# .env.example here.Modify the code below :)
 
+w
 DB_USER= /username here/
 DB_PASS= /password here/
 DB_HOST: /host here/
