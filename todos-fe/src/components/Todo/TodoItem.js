@@ -1,14 +1,34 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPen, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import EditBtn from "./buttons/EditBtn";
 import DeleteBtn from "./buttons/DeleteBtn";
+import axios from "axios";
+import loading from "../../images/loading.gif"
+import { STATUS_COLOR } from "../../configs/status";
 
 const TodoList = () => {
+  const { todoId } = useParams();
+  const [item, setItem] = useState(null);
+
+  useEffect(async () => {
+    let res = await axios.get(`http://localhost:3001/api/todos/${todoId}`);
+    setItem(res.data);
+  }, []);
+
+  if (item === null)
+    return (
+      <>
+        <img src={loading} alt="loading img" />
+      </>
+    );
+
   return (
     <>
       <div className="column is-three-fifths">
-        <article className="panel">
-          <p className="panel-heading">TODO: 標題</p>
+        <article className={`panel ${STATUS_COLOR[item.status]}`}>
+          <p className="panel-heading">{item.title}</p>
           <div className="card-image">
             <figure className="image is-4by3">
               <img src="#" alt="Placeholder image" />
@@ -16,7 +36,9 @@ const TodoList = () => {
           </div>
           <div className="panel-block">TODO: 內容</div>
           <ul>
-            <li className="panel-block">到期日: TODO: 到期日</li>
+            {" "}
+            {/*item && item.deadline */}
+            <li className="panel-block">到期日: {item.deadline}</li>
             <li className="panel-block">ＸＸＸ 於 YYYY-MM-DD 建立</li>
             <li className="panel-block">ＯＯＯ 於 YYYY-MM-DD 更新</li>
           </ul>
